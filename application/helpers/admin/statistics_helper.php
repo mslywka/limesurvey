@@ -1,6 +1,6 @@
 <?php
 /*
-* LimeSurvey RRU Changes
+* LimeSurvey RRU Awesome Changes
 * Copyright (C) 2007-2011 The LimeSurvey Project Team / Carsten Schmitz
 * All rights reserved.
 * License: GNU/GPL License v2 or later, see LICENSE.php
@@ -46,7 +46,7 @@ function createChart($iQuestionID, $iSurveyID, $type=null, $lbl, $gdata, $grawda
     $language = $oLanguage->langcode;
     $clang = $oLanguage;
     $cachefilename = "";
-    
+
     /* Set the fonts for the chart */
     if ($chartfontfile=='auto')
     {
@@ -427,7 +427,7 @@ function buildSelects($allfields, $surveyid, $language) {
                     $mselects=array();
                     //create a list out of the $pv array
                     list($lsid, $lgid, $lqid) = explode("X", $pv);
-                   
+
 		    //rru-specific
 		    $outputs['gid']=$lgid;
 
@@ -706,7 +706,7 @@ class statistics_helper {
             $fielddata=$fieldmap[$fld];
 
             list($qanswer, $qlid)=!empty($fielddata['aid']) ? explode("_", $fielddata['aid']) : array("", "");
-  
+
 	    //rru-specific
 	    list($qsid, $qgid, $qqid) = explode("X", $rt, 3);
 	    $outputs['gid']=$qgid;
@@ -1673,7 +1673,7 @@ class statistics_helper {
                 $sPDFQuestion=flattenText($outputs['qquestion'],false,true);
 
 		//rru-specific start
-	
+
 		$msid=$surveyid;
 		$mgid=$outputs['gid'];
                 $group_name="";
@@ -2744,10 +2744,10 @@ class statistics_helper {
         list($qsid, $qgid, $qqid) = explode("X", $rt, 3);
         $qsid = $surveyid;
         $aattr = getQuestionAttributeValues($outputs['parentqid'], substr($rt, 0, 1));
-      
+
 	//rru-specific
 	$outputs['gid']=$qgid;
-	
+
         //PCHART has to be enabled and we need some data
         if ($usegraph == 1) {
             $bShowGraph = $aattr["statistics_showgraph"] == "1";
@@ -3169,9 +3169,9 @@ class statistics_helper {
 
         elseif (!empty($newsql)) {$sql = $newsql;}
 
-        if (!isset($sql) || !$sql) 
+        if (!isset($sql) || !$sql)
         {
-            $sql= null;            
+            $sql= null;
         }
 
         //only continue if we have something to output
@@ -3224,7 +3224,7 @@ class statistics_helper {
 		           }
 			}
 
-			 */	
+			 */
 			//$mqid=$qid;
 			//$nquery="Select gid from {{questions}} where sid='{$surveyid}' and qid='{$mqid}'";
 			//$mgid = Yii::app()->db->createCommand($nquery)->query();
@@ -3244,8 +3244,8 @@ class statistics_helper {
 				//
                             $nrow=array_values($nrow);
                             $outputs['group_name']=flattenText($nrow[0]);
-			    
-			    
+
+
 			    //$group_name=flattenText($nrow[0]);
                             //$qtype=$nrow[1];
                             //$qquestion=flattenText($nrow[2]);
@@ -3347,7 +3347,7 @@ class statistics_helper {
         static $recordCount = 0;
         static $field = null;
         static $allRows = null;
-        
+
         if ($surveyid !== $sid || $fieldname !== $field) {
             //get data
             $query =" FROM {{survey_$surveyid}} WHERE ".Yii::app()->db->quoteColumnName($fieldname)." IS NOT null";
@@ -3394,15 +3394,15 @@ class statistics_helper {
                 // Need at least 2 records
                 if ($recordCount<2) return;
                 break;
-                
+
             case 0:
                 return $recordCount;
-                
+
             default:
                 return;
                 break;
-        }        
-        
+        }
+
         $q1 = $quartile/4 * ($recordCount+1);
         $row = $q1-1; // -1 since we start counting at 0
         if ($q1 === (int) $q1) {
@@ -3428,7 +3428,7 @@ class statistics_helper {
         //filter incomplete answers if set
         if (incompleteAnsFilterState() == "incomplete") {$search['condition'] .= " AND submitdate is null";}
         elseif (incompleteAnsFilterState() == "complete") {$search['condition'] .= " AND submitdate is not null";}
-        
+
         //Look for any selects/filters set in the original statistics query, and apply them to the column listing
         if (isset(Yii::app()->session['statistics_selects_'.$surveyid]) && is_array(Yii::app()->session['statistics_selects_'.$surveyid]))
         {
@@ -3457,7 +3457,7 @@ class statistics_helper {
             $output[]=array("id"=>$row['id'], "value"=>$row[$column]);
 	}
         return $output;
-    }    
-    
-    
+    }
+
+
 }
