@@ -1,0 +1,24 @@
+#Ignore these files
+styles/
+application/
+README
+admin/
+docs/
+fonts/
+framework/
+images/
+index.php
+installer/
+locale/
+plugins/
+scripts/
+styles-public/
+templates/
+themes/
+third_party/
+tmp/
+upload/
+
+#Excpet
+!styles/gringegreen/images/rru_logo.jpg
+!application/helpers/admin/statistics_helper.php
