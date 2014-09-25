@@ -124,11 +124,12 @@
                     </li>
 
                     <li>
-                        <label><?php $clang->eT("Select output format"); ?>:</label>
-                        <input type='radio' id="outputtypehtml" name='outputtype' value='html' checked='checked' />
-                        <label for='outputtypehtml'>HTML</label>
-                        <input type='radio' id="outputtypepdf" name='outputtype' value='pdf' />
+			<label><?php $clang->eT("Select output format"); ?>:</label>
+                        //rru-specific - Put the PDF report option first and have it checked by default.
+                        <input type='radio' id="outputtypepdf" name='outputtype' value='pdf' checked='checked' />
                         <label for='outputtypepdf'>PDF</label>
+                        <input type='radio' id="outputtypehtml" name='outputtype' value='html' />
+                        <label for='outputtypehtml'>HTML</label>
                         <input type='radio' id="outputtypexls" onclick='nographs();' name='outputtype' value='xls' />
                         <label for='outputtypexls'>Excel</label>
                     </li>
